@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地震學導論：從理論基礎到社會應用 (完整筆記)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; }
+        html { scroll-behavior: smooth; }
+        .toc-link { transition: all 0.2s; }
+        .toc-link:hover { color: #2563eb; padding-left: 0.5rem; border-left: 3px solid #2563eb; }
+        .note-highlight { background: linear-gradient(120deg, #dbeafe 0%, #dbeafe 100%); background-repeat: no-repeat; background-size: 100% 30%; background-position: 0 80%; }
+        .image-container img { transition: transform 0.3s ease; }
+        .image-container:hover img { transform: scale(1.02); }
+        .math-formula { font-family: 'Times New Roman', Times, serif; font-style: italic; background-color: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 0.25rem; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- 頂部橫幅 -->
+    <header class="bg-slate-900 text-white py-12 px-6 border-b-8 border-blue-600">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">地震學導論：從理論基礎到社會應用</h1>
+            <p class="text-xl text-slate-300 font-light">地震學讀書筆記 ── 融合原版筆記與 11 大核心考點</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 px-6 py-8">
+        
+        <!-- 左側導覽列 (Table of Contents) -->
+        <aside class="w-full md:w-1/4 flex-shrink-0 relative">
+            <div class="sticky top-8 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">目錄導覽</h3>
+                <nav class="space-y-3 text-sm text-slate-600">
+                    <a href="#section-1" class="block toc-link font-medium">1. 地震學導論 (Introduction)</a>
+                    <div class="pl-4 space-y-2 border-l-2 border-slate-100">
+                        <a href="#topic-1" class="block toc-link text-xs">主題 1: 研究範疇</a>
+                        <a href="#topic-2" class="block toc-link text-xs">主題 2: 系統三要素與基礎圖解</a>
+                        <a href="#topic-4" class="block toc-link text-xs">主題 4: 公式(1)與能量衰減</a>
+                    </div>
+                    
+                    <a href="#section-2" class="block toc-link font-medium mt-4">2. 地震學與社會</a>
+                    <div class="pl-4 space-y-2 border-l-2 border-slate-100">
+                        <a href="#topic-3" class="block toc-link text-xs">主題 3: Hazard vs Risk</a>
+                        <a href="#topic-5" class="block toc-link text-xs">主題 5: 地震工程與災害</a>
+                        <a href="#topic-6" class="block toc-link text-xs">主題 6: 建築建材與高度</a>
+                        <a href="#topic-7" class="block toc-link text-xs">主題 7: 土壤液化的原因</a>
+                        <a href="#topic-11" class="block toc-link text-xs">主題 11: 監測核子試爆</a>
+                    </div>
+
+                    <a href="#section-3" class="block toc-link font-medium mt-4">3. 危害地圖與預測</a>
+                    <div class="pl-4 space-y-2 border-l-2 border-slate-100">
+                        <a href="#topic-8" class="block toc-link text-xs">主題 8: 預報與預測的差異</a>
+                        <a href="#topic-10" class="block toc-link text-xs">主題 10: 地震預測方法</a>
+                    </div>
+
+                    <a href="#section-4" class="block toc-link font-medium mt-4">4. 地震空區理論的辯論</a>
+                    <div class="pl-4 space-y-2 border-l-2 border-slate-100">
+                        <a href="#topic-9" class="block toc-link text-xs">主題 9: Seismic Gap 圖解</a>
+                    </div>
+
+                    <a href="#section-5" class="block toc-link font-medium mt-4 text-blue-600">5. 互動式隨堂測驗與動畫</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 右側主要內容 -->
+        <main class="w-full md:w-3/4 space-y-12">
+
+            <!-- ================= 第一部分 ================= -->
+            <section id="section-1" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-blue-500 pb-2 inline-block">1. 地震學導論 (Introduction)</h2>
+                
+                <div class="prose max-w-none text-slate-700 space-y-4">
+                    <p><span class="font-bold text-blue-700">定義：</span>地震學是研究固體地球中彈性波（或聲波）的學科。</p>
+                    <p><span class="font-bold text-blue-700">研究核心：</span>地震波由 <span class="note-highlight">源 (Source)</span> （如地震或爆炸）產生，通過 <span class="note-highlight">介質 (Medium)</span> （地球的一部分）傳播，並由 <span class="note-highlight">接收器 (Receiver)</span> （地震儀）記錄。</p>
+                    
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>地震圖 (Seismogram)：</strong>記錄地面運動的資料，包含有關震源和傳播介質的信息。</li>
+                        <li><strong>震源信息：</strong>波的到達時間可推算震源位置。</li>
+                        <li><strong>介質信息：</strong>波的速度反映了地球內部物質的物理性質。</li>
+                        <li><strong>地球內部結構探索：</strong>由於人類目前鑽探深度僅約 13 公里，地震學成為了解深達 6371 公里地心結構的主要工具。透過地震波速度的變化，科學家推論出地殼、地幔、液態外核及固態內核的存在。</li>
+                    </ul>
+                </div>
+
+                <!-- 插入 主題 1 -->
+                <div id="topic-1" class="mt-8 bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3 flex items-center"><span class="bg-blue-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">1</span> 主題：地震學研究範疇？</h3>
+                    <p class="text-slate-700">承接上述定義，地震學的研究範疇極廣，主要包含：</p>
+                    <ul class="list-disc pl-5 mt-2 text-slate-700">
+                        <li><strong>震源力學：</strong> 研究斷層錯動、應力釋放機制，以及非自然震源（核試爆）。</li>
+                        <li><strong>構造地震學：</strong> 利用地震波作為「地球X光」，探勘地球深部構造與板塊邊界。</li>
+                        <li><strong>工程與強震地震學：</strong> 評估地表搖晃程度，應用於防震建築設計與災害評估。</li>
+                    </ul>
+                </div>
+
+                <!-- 插入 主題 2 -->
+                <div id="topic-2" class="mt-8">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="bg-blue-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">2</span> 主題：圖解說明 (1.1-1 ~ 1.1-5)</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 圖 1.1-1 & 1.1-2 -->
+                        <div class="border border-slate-200 rounded-lg p-4 image-container">
+                            <img src="1.1-1.png" onerror="this.src='https://placehold.co/400x250/e2e8f0/475569?text=圖1.1-1'" alt="圖1.1-1" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-blue-800">圖 1.1-1：系統三要素</h4>
+                            <p class="text-sm text-slate-600">完美呼應前文的核心概念：震源產生能量，經過地球介質傳遞，最後由地表的接收器（地震儀）記錄。</p>
+                        </div>
+                        <div class="border border-slate-200 rounded-lg p-4 image-container">
+                            <img src="1.1-2.png" onerror="this.src='https://placehold.co/400x250/e2e8f0/475569?text=圖1.1-2'" alt="圖1.1-2" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-blue-800">圖 1.1-2：地震波型與地震圖</h4>
+                            <p class="text-sm text-slate-600">展示了波的到達順序：速度最快的 P波最先抵達，接著是 S波，最後是振幅最大、造成破壞的主力——表面波。</p>
+                        </div>
+                        <!-- 圖 1.1-3 & 1.1-4 -->
+                        <div class="border border-slate-200 rounded-lg p-4 image-container">
+                            <img src="1.1-3.png" onerror="this.src='https://placehold.co/400x250/e2e8f0/475569?text=圖1.1-3'" alt="圖1.1-3" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-blue-800">圖 1.1-3：透視地球內部</h4>
+                            <p class="text-sm text-slate-600">顯示地震射線在地球內部的折射與反射。S波陰影區的存在，正是我們推論出「液態外核」的關鍵證據。</p>
+                        </div>
+                        <div class="border border-slate-200 rounded-lg p-4 image-container">
+                            <img src="1.1-4.png" onerror="this.src='https://placehold.co/400x250/e2e8f0/475569?text=圖1.1-4'" alt="圖1.1-4" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-blue-800">圖 1.1-4：走時曲線 (Travel Time)</h4>
+                            <p class="text-sm text-slate-600">波傳播時間與距離的關係圖。利用 P波與 S波抵達的時間差 (S-P time)，我們可以精確計算出震央距離。</p>
+                        </div>
+                        <!-- 圖 1.1-5 -->
+                        <div class="border border-slate-200 rounded-lg p-4 md:col-span-2 image-container">
+                            <img src="1.1-5.png" onerror="this.src='https://placehold.co/800x250/e2e8f0/475569?text=圖1.1-5'" alt="圖1.1-5" class="w-full rounded mb-3 object-cover h-48">
+                            <h4 class="font-bold text-blue-800">圖 1.1-5：全球地震分佈</h4>
+                            <p class="text-sm text-slate-600">地震並非隨機發生，而是呈現帶狀分佈。這張圖勾勒出了地球板塊的邊界，是支持板塊構造學說的鐵證。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 插入 主題 4 -->
+                <div id="topic-4" class="mt-8 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="bg-blue-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">4</span> 主題：公式(1) 說明，地震波能量衰減的原因？</h3>
+                    <p class="text-slate-700 mb-3">地震波在傳遞時，其振幅 <span class="math-formula">A(r)</span> 會隨著距離 <span class="math-formula">r</span> 增加而變小，一般可表示為：</p>
+                    <div class="text-center my-4">
+                        <span class="math-formula text-xl bg-white shadow-sm px-4 py-2 border border-slate-300">A(r) ∝ (1/r) · e<sup>-γr</sup></span>
+                    </div>
+                    <p class="text-slate-700">能量衰減主要由兩種完全不同的物理機制造成：</p>
+                    <ol class="list-decimal pl-5 mt-2 space-y-2 text-slate-700">
+                        <li><strong>幾何擴散 (Geometrical Spreading) —— 對應 <span class="math-formula">1/r</span>：</strong> 波前向外擴展時，總能量被分攤到越來越大的球殼面積上，導致單位面積上的能量隨距離純粹因幾何空間變大而減少。</li>
+                        <li><strong>非彈性衰減/吸收 (Intrinsic Attenuation) —— 對應 <span class="math-formula">e<sup>-γr</sup></span>：</strong> 地球不是完美的彈性體，岩石顆粒摩擦會將波的機械能轉換為熱能消散；加上地下構造不均勻造成的散射 (Scattering)，導致能量流失。</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- ================= 第二部分 ================= -->
+            <section id="section-2" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-emerald-500 pb-2 inline-block">2. 地震學與社會 (Seismology and Society)</h2>
+                
+                <div class="prose max-w-none text-slate-700 space-y-4">
+                    <p>地震學不僅是學術研究，還與社會政策與安全息息相關：</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>板塊構造論的革命：</strong> 1960 年代後期板塊構造論的出現是地震學的一個重大範式轉移 (Paradigm shift)，解釋了地震與中洋脊、海溝、火山及山脈的關聯。</li>
+                        <li><strong>地震危害與風險分析挑戰：</strong> 地震發生頻率低但破壞力強，社會往往較難接受這類風險。</li>
+                        <li><strong>預防措施：</strong> 海岸場址規劃（識別易受海嘯侵襲區域）與即時預警系統（透過數位數據即時評估並發布警告）。</li>
+                    </ul>
+                </div>
+
+                <!-- 插入 主題 3 -->
+                <div id="topic-3" class="mt-8 bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                    <h3 class="text-xl font-bold text-emerald-900 mb-3 flex items-center"><span class="bg-emerald-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">3</span> 主題：Seismic Hazard 與 Seismic Risk 的區別？</h3>
+                    <ul class="list-disc pl-5 text-slate-700 space-y-2">
+                        <li><strong>Seismic Hazard (地震危害)：</strong> 指大自然發生的物理現象本身（如斷層破裂、強烈搖晃的「機率」與「強度」）。這是天然的，無法阻止。</li>
+                        <li><strong>Seismic Risk (地震風險)：</strong> 指危害發生後對人類社會造成的後果與損失（傷亡、經濟損失）。<br>
+                        <span class="note-highlight font-bold">風險 (Risk) = 危害 (Hazard) × 暴露度 (Exposure) × 脆弱度 (Vulnerability)</span></li>
+                    </ul>
+                </div>
+
+                <!-- 插入 主題 5 -->
+                <div id="topic-5" class="mt-8">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="bg-emerald-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">5</span> 主題：圖 1.2-3、1.2-5、1.2-6 說明</h3>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col md:flex-row gap-4 border border-slate-200 rounded-lg p-4 items-center">
+                            <img src="1.2-3.png" onerror="this.src='https://placehold.co/300x200/d1fae5/065f46?text=圖1.2-3'" alt="圖1.2-3" class="w-full md:w-1/3 rounded">
+                            <div class="w-full md:w-2/3">
+                                <h4 class="font-bold text-emerald-800">圖 1.2-3：地震的直接破壞</h4>
+                                <p class="text-sm text-slate-600">展示強烈地表加速度超越建築承受極限造成的結構性破壞或斷層地表破裂現象。</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 border border-slate-200 rounded-lg p-4 items-center">
+                            <img src="1.2-5.png" onerror="this.src='https://placehold.co/300x200/d1fae5/065f46?text=圖1.2-5'" alt="圖1.2-5" class="w-full md:w-1/3 rounded">
+                            <div class="w-full md:w-2/3">
+                                <h4 class="font-bold text-emerald-800">圖 1.2-5：建築反應譜與共振</h4>
+                                <p class="text-sm text-slate-600">當地表搖晃的頻率與建築物的「自然頻率」吻合時，會產生共振 (Resonance)，使搖晃幅度劇增。</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 border border-slate-200 rounded-lg p-4 items-center">
+                            <img src="1.2-6.png" onerror="this.src='https://placehold.co/300x200/d1fae5/065f46?text=圖1.2-6'" alt="圖1.2-6" class="w-full md:w-1/3 rounded">
+                            <div class="w-full md:w-2/3">
+                                <h4 class="font-bold text-emerald-800">圖 1.2-6：海嘯與次生災害</h4>
+                                <p class="text-sm text-slate-600">說明海底斷層垂直錯動如何推動海水形成海嘯，以及其他由搖晃引發的間接危害。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <!-- 插入 主題 6 -->
+                    <div id="topic-6" class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center"><span class="bg-emerald-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">6</span> 建築與地震</h3>
+                        <p class="text-sm font-bold text-emerald-700 mt-2">1. 建材抵抗力：</p>
+                        <p class="text-sm text-slate-700 mb-2">木材/鋼材具高<strong>韌性 (Ductility)</strong>，能彎曲吸收能量；未加固磚石屬<strong>脆性 (Brittle)</strong>，受搖晃易瞬間龜裂倒塌。</p>
+                        <p class="text-sm font-bold text-emerald-700 mt-2">2. 建築物高度：</p>
+                        <p class="text-sm text-slate-700">低矮建築自然頻率高，易受<strong>高頻（短週期）</strong>近震破壞；高樓大廈自然頻率低，易受遠處傳來的<strong>低頻（長週期）</strong>表面波引發嚴重共振。</p>
+                    </div>
+
+                    <!-- 插入 主題 7 -->
+                    <div id="topic-7" class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center"><span class="bg-emerald-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">7</span> 土壤液化的原因</h3>
+                        <p class="text-sm text-slate-700">發生在：<strong>鬆散砂土、地下水飽和、強烈搖晃</strong>的地區。</p>
+                        <p class="text-sm text-slate-700 mt-2">機制：強震擠壓飽和的砂土，導致<strong>孔隙水壓瞬間急劇上升</strong>。當水壓大於砂粒間的摩擦力時，土壤瞬間變成像泥漿一樣的黏滯液體，失去承載力，導致建築下陷或傾斜。</p>
+                    </div>
+                </div>
+
+                <!-- 插入 主題 11 -->
+                <div id="topic-11" class="mt-8 border-t-2 border-dashed border-slate-200 pt-8">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="bg-emerald-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">11</span> 主題：如何監測核子試爆？ (圖 1.2-18、1.2-19)</h3>
+                    <p class="text-slate-700 mb-4">區別自然地震與核武試爆的關鍵在於<strong>「震源力學機制」</strong>。核爆是均勻膨脹（產生巨大P波，幾乎無S波/表面波）；自然地震是斷層錯動（產生強大S波與表面波）。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="border border-slate-200 rounded-lg p-4">
+                            <img src="1.2-18.png" onerror="this.src='https://placehold.co/400x250/d1fae5/065f46?text=圖1.2-18'" alt="圖1.2-18" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-emerald-800 text-sm">圖 1.2-18：波形差異</h4>
+                            <p class="text-xs text-slate-600">核爆波形起初是巨大 P波突波，隨後迅速衰減；地震波形則在後段出現振幅極大的 S波與表面波尾巴。</p>
+                        </div>
+                        <div class="border border-slate-200 rounded-lg p-4">
+                            <img src="1.2-19.png" onerror="this.src='https://placehold.co/400x250/d1fae5/065f46?text=圖1.2-19'" alt="圖1.2-19" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-emerald-800 text-sm">圖 1.2-19：規模鑑別法</h4>
+                            <p class="text-xs text-slate-600">比較體波規模(mb)與表面波規模(Ms)。核爆因為缺乏表面波，在圖表上會異常偏向左上方（mb大但Ms極小）。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= 第三部分 ================= -->
+            <section id="section-3" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-purple-500 pb-2 inline-block">3. 數據驅動的機率性危害地圖與預測</h2>
+                
+                <div class="prose max-w-none text-slate-700 space-y-4 mb-8">
+                    <p>當代規範的制定高度依賴 <span class="font-bold text-purple-700">地震危害圖 (Seismic Hazard Maps)</span>。這些地圖透過歷史地震數據與物理模型，預測特定地區在未來（如 50 年內）發生特定強度震動（以重力加速度 $g$ 表示）的機率。</p>
+                    <p>公共當局根據這些科學預測來制定不同層級的建築抗震標準，以在建築成本與公共安全之間取得平衡。</p>
+                </div>
+
+                <!-- 插入 主題 8 -->
+                <div id="topic-8" class="bg-purple-50 p-6 rounded-xl border border-purple-100 flex flex-col md:flex-row gap-6 items-center">
+                    <div class="w-full md:w-1/3">
+                        <img src="1.2-14.png" onerror="this.src='https://placehold.co/300x200/f3e8ff/7e22ce?text=圖1.2-14'" alt="圖1.2-14" class="w-full rounded border border-purple-200 shadow-sm">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-xl font-bold text-purple-900 mb-3 flex items-center"><span class="bg-purple-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">8</span> 主題：圖 1.2-14 說明預報與預測之不同</h3>
+                        <ul class="list-disc pl-5 text-slate-700 space-y-2">
+                            <li><strong>預測 (Prediction)：</strong> 給出精確的「時間、地點、規模」（目前科學無法做到短期準確預測）。</li>
+                            <li><strong>預報 (Forecasting)：</strong> 類似天氣預報，給出長期的機率性評估（如圖 1.2-14 顯示未來30年發生大地震的機率為62%）。這是制定法規與保險的依據。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 插入 主題 10 -->
+                <div id="topic-10" class="mt-8">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="bg-purple-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">10</span> 主題：地震預測的方法有哪些？</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm text-slate-700">1. 觀察前震活動異常增加</div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm text-slate-700">2. GPS監測地殼異常形變</div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm text-slate-700">3. 觀測波速比 (Vp/Vs) 變化</div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm text-slate-700">4. 監測地下水位/水質變化</div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm text-slate-700">5. 測量岩石釋放的氡氣濃度</div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm text-slate-700">6. 觀察電磁異常或動物行為</div>
+                    </div>
+                    <p class="text-xs text-red-500 mt-2">* 註：以上方法目前皆有極高假警報率，無法作為標準預測。</p>
+                </div>
+            </section>
+
+            <!-- ================= 第四部分 ================= -->
+            <section id="section-4" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-rose-500 pb-2 inline-block">4. 地震空區理論的科學辯論與限制</h2>
+                
+                <div class="prose max-w-none text-slate-700 space-y-4 mb-8">
+                    <p>「地震空區」（Seismic Gaps）理論在地震學界仍是一個具爭議性且尚未被完全證實的預測工具。雖然該理論在直覺上合理，但在實際應用與科學檢驗中遇到了顯著的挑戰。</p>
+                    <p><span class="font-bold text-rose-700">理論基礎：板塊邊界的填補機制</span><br>地震空區理論的核心假設是：一條長型的板塊邊界（如聖安德烈斯斷層或海溝）會分段破裂。由於板塊運動是穩定的，最終所有區段都必須破裂以釋放累積的應力。</p>
+                </div>
+
+                <!-- 插入 主題 9 -->
+                <div id="topic-9" class="bg-rose-50 p-6 rounded-xl border border-rose-100">
+                    <h3 class="text-xl font-bold text-rose-900 mb-4 flex items-center"><span class="bg-rose-600 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm mr-2">9</span> 主題：甚麼是 Seismic Gap？ (圖 1.2-15、1.2-16)</h3>
+                    <p class="text-slate-700 mb-6">如果活躍斷層帶上相鄰區段皆已發生過大地震，唯獨「某一區段」異常安靜未破裂，這塊空白區域即為「地震空區」。理論認為這裡正高度累積應力，未來極度危險。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white border border-rose-200 rounded-lg p-4">
+                            <img src="1.2-15.png" onerror="this.src='https://placehold.co/400x250/ffe4e6/e11d48?text=圖1.2-15'" alt="圖1.2-15" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-rose-800 text-sm">圖 1.2-15：歷史破裂分佈</h4>
+                            <p class="text-xs text-slate-600">展示歷次大地震破裂的範圍，明顯可見被夾在中間未破裂的空白區段。</p>
+                        </div>
+                        <div class="bg-white border border-rose-200 rounded-lg p-4">
+                            <img src="1.2-16.png" onerror="this.src='https://placehold.co/400x250/ffe4e6/e11d48?text=圖1.2-16'" alt="圖1.2-16" class="w-full rounded mb-3">
+                            <h4 class="font-bold text-rose-800 text-sm">圖 1.2-16：空區的填補</h4>
+                            <p class="text-xs text-slate-600">顯示後續的地震確實發生在先前的空區內，印證了板塊邊界最終會「填滿破裂」的假設。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= 第五部分：互動測驗 ================= -->
+            <section id="section-5" class="bg-gradient-to-br from-slate-800 to-blue-900 p-8 rounded-2xl shadow-lg border border-slate-700 text-white">
+                <h2 class="text-3xl font-bold text-white mb-2 border-b-2 border-blue-400 pb-2 inline-block">5. 互動式隨堂測驗與動畫</h2>
+                <p class="text-blue-200 mb-8">讓我們透過三個互動小測驗，搭配視覺化動畫，來驗證你對第一章核心概念的理解！</p>
+                
+                <div class="space-y-8">
+                    
+                    <!-- 測驗題 1 -->
+                    <div class="bg-white text-slate-800 rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-xl text-blue-900 mb-4"><span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm mr-2">Q1</span> 地震波與核爆監測</h3>
+                        <p class="text-lg mb-4">當一個國家秘密進行地下核子試爆時，遠方的地震儀紀錄到的波形最可能呈現什麼特徵？</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4" id="q1-options">
+                            <button onclick="checkAnswer('q1', 'A')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all">(A) 具有極大的 S波與表面波</button>
+                            <button onclick="checkAnswer('q1', 'B')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all">(B) 幾乎只有強烈的 P波，缺乏 S波</button>
+                            <button onclick="checkAnswer('q1', 'C')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all">(C) P波與 S波的振幅大小差不多</button>
+                            <button onclick="checkAnswer('q1', 'D')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all">(D) 只會記錄到表面波</button>
+                        </div>
+                        <div id="q1-explanation" class="hidden bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mt-4">
+                            <p class="font-bold text-blue-700 mb-2">✅ 正確答案：(B)</p>
+                            <p class="mb-2"><strong>【詳解】：</strong> 核爆是點源的向外均勻壓縮膨脹，不會產生斷層錯動的剪切力，因此會產生極大的 P波（壓縮波），而幾乎沒有 S波（剪力波）。</p>
+                            <p class="text-sm text-slate-600 mb-4"><strong>💡【舉例】：</strong> 就像在水中引爆一顆水仗氣球，水波只會向四周推擠（壓縮），而不會像用手左右攪動水產生波浪（剪切）。</p>
+                            
+                            <!-- 小動畫 1 -->
+                            <div class="flex gap-4 items-center justify-center p-4 bg-white rounded border border-slate-200">
+                                <div class="flex flex-col items-center">
+                                    <div class="relative w-16 h-16 flex items-center justify-center mb-2">
+                                        <div class="absolute w-4 h-4 bg-red-500 rounded-full animate-ping"></div>
+                                        <div class="w-4 h-4 bg-red-600 rounded-full z-10"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-red-600">核爆 (全方位壓縮)</span>
+                                </div>
+                                <div class="w-px h-16 bg-slate-300 mx-4"></div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-16 h-16 flex flex-col items-center justify-center mb-2 overflow-hidden">
+                                        <div class="w-12 h-6 bg-amber-700 border border-slate-900 translate-x-2 animate-[slideRight_1s_ease-in-out_infinite_alternate]"></div>
+                                        <div class="w-12 h-6 bg-amber-600 border border-slate-900 -translate-x-2 animate-[slideLeft_1s_ease-in-out_infinite_alternate]"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-amber-700">地震 (剪切錯動)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 測驗題 2 -->
+                    <div class="bg-white text-slate-800 rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-xl text-emerald-900 mb-4"><span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm mr-2">Q2</span> 建築共振效應</h3>
+                        <p class="text-lg mb-4">遠方發生規模 7.5 大地震，高頻波已衰減，傳遞到城市時只剩下「低頻（長週期）表面波」。請問哪種建築最容易發生嚴重的「共振效應」？</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4" id="q2-options">
+                            <button onclick="checkAnswer('q2', 'A')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all">(A) 1~3層的低矮平房</button>
+                            <button onclick="checkAnswer('q2', 'B')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all">(B) 堅固的地下室停車場</button>
+                            <button onclick="checkAnswer('q2', 'C')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all">(C) 超高層摩天大樓</button>
+                            <button onclick="checkAnswer('q2', 'D')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all">(D) 木造日式建築</button>
+                        </div>
+                        <div id="q2-explanation" class="hidden bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-lg mt-4">
+                            <p class="font-bold text-emerald-700 mb-2">✅ 正確答案：(C)</p>
+                            <p class="mb-2"><strong>【詳解】：</strong> 建築物越高，其自然頻率越低（週期越長）。遠地傳來的低頻地震波，其頻率容易與高樓的自然頻率一致，波的能量會不斷疊加，產生極大搖晃的共振效應。</p>
+                            <p class="text-sm text-slate-600 mb-4"><strong>💡【舉例】：</strong> 就像推鞦韆，繩子越長（高樓）擺動越慢（低頻）。如果你推的頻率剛好對上它慢速擺動的節奏，鞦韆就會越盪越高！</p>
+                            
+                            <!-- 小動畫 2 -->
+                            <div class="flex gap-8 items-end justify-center p-4 bg-slate-100 rounded border border-slate-300 h-40 overflow-hidden relative">
+                                <div class="absolute bottom-4 left-4 text-xs text-slate-500 font-bold">低頻長波抵達中...</div>
+                                <div class="w-12 h-12 bg-slate-500 border-2 border-slate-700 rounded-sm origin-bottom"></div>
+                                <div class="w-12 h-32 bg-sky-600 border-2 border-slate-800 rounded-sm origin-bottom animate-[swayTall_2s_ease-in-out_infinite_alternate]">
+                                    <div class="grid grid-cols-2 gap-1 p-1 h-full"><div class="bg-sky-200"></div><div class="bg-sky-200"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 測驗題 3 -->
+                    <div class="bg-white text-slate-800 rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-xl text-rose-900 mb-4"><span class="bg-rose-600 text-white px-3 py-1 rounded-full text-sm mr-2">Q3</span> 土壤液化機制</h3>
+                        <p class="text-lg mb-4">關於「土壤液化」的發生，下列哪一個條件是<strong>不需要（或錯誤）</strong>的？</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4" id="q3-options">
+                            <button onclick="checkAnswer('q3', 'A')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-rose-500 hover:bg-rose-50 transition-all">(A) 鬆散的砂質土壤</button>
+                            <button onclick="checkAnswer('q3', 'B')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-rose-500 hover:bg-rose-50 transition-all">(B) 充足的水分（高地下水位）</button>
+                            <button onclick="checkAnswer('q3', 'C')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-rose-500 hover:bg-rose-50 transition-all">(C) 強烈的地震搖晃</button>
+                            <button onclick="checkAnswer('q3', 'D')" class="w-full text-left p-3 rounded-lg border-2 border-slate-200 hover:border-rose-500 hover:bg-rose-50 transition-all">(D) 地底充滿大量天然氣體</button>
+                        </div>
+                        <div id="q3-explanation" class="hidden bg-rose-50 border-l-4 border-rose-500 p-4 rounded-r-lg mt-4">
+                            <p class="font-bold text-rose-700 mb-2">✅ 正確答案：(D)</p>
+                            <p class="mb-2"><strong>【詳解】：</strong> 土壤液化的三要素是：鬆散砂土、水分飽和、強震搖晃。強震會擠壓孔隙中的水，導致「孔隙水壓」急劇上升，把砂粒撐開，使土壤瞬間變成無承載力的泥漿。天然氣體與液化無關。</p>
+                            <p class="text-sm text-slate-600 mb-4"><strong>💡【舉例】：</strong> 就像去海邊，踩在乾沙子上很穩；但如果你踩在剛退潮、飽含水分的濕沙子上，腳稍微用力原地踏步（搖晃），沙子就會瞬間變成爛泥巴，讓你的腳陷下去！</p>
+                            
+                            <!-- 小動畫 3 -->
+                            <div class="relative w-full max-w-xs mx-auto h-24 bg-sky-100 border-b-8 border-amber-800 rounded overflow-hidden">
+                                <!-- Building -->
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-slate-700 rounded-t z-20 origin-bottom transition-transform duration-1000" id="liquefaction-building"></div>
+                                <!-- Sand & Water -->
+                                <div class="absolute bottom-0 w-full h-12 bg-amber-300 z-10 opacity-80 flex items-center justify-center animate-[shake_0.1s_linear_infinite]">
+                                    <div class="w-full h-full bg-blue-400 opacity-50 animate-pulse"></div>
+                                </div>
+                                <div class="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-slate-600 z-30 bg-white/80 px-2 rounded">點擊右側按鈕模擬強震</div>
+                                <button onclick="triggerLiquefaction()" class="absolute top-2 right-2 z-30 bg-rose-600 text-white text-xs px-2 py-1 rounded shadow hover:bg-rose-700">觸發搖晃</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center mt-12">
+        <p>「地震學第一章」與您的原版筆記完美結合版</p>
+        <p class="text-sm mt-2">※ 溫馨提示：請確保所有圖片檔（如 1.1-1.png）與此 HTML 檔案位於同一目錄下。</p>
+    </footer>
+
+    <!-- 動畫與測驗邏輯腳本 -->
+    <style>
+        /* 客製化動畫 Keyframes */
+        @keyframes slideRight { 0% { transform: translateX(2px); } 100% { transform: translateX(8px); } }
+        @keyframes slideLeft { 0% { transform: translateX(-2px); } 100% { transform: translateX(-8px); } }
+        @keyframes swayTall { 0% { transform: rotate(-8deg); } 100% { transform: rotate(8deg); } }
+        @keyframes shake { 0% { transform: translateX(-2px); } 50% { transform: translateX(2px); } 100% { transform: translateX(-2px); } }
+        .building-sink { transform: translate(-50%, 10px) rotate(15deg) !important; transition: all 1.5s ease-in !important; }
+    </style>
+    
+    <script>
+        // 測驗解答字典
+        const answers = {
+            'q1': 'B',
+            'q2': 'C',
+            'q3': 'D'
+        };
+
+        function checkAnswer(questionId, selectedOption) {
+            const optionsDiv = document.getElementById(questionId + '-options');
+            const buttons = optionsDiv.getElementsByTagName('button');
+            const explanation = document.getElementById(questionId + '-explanation');
+            const correctOption = answers[questionId];
+
+            // 鎖定所有按鈕並標示顏色
+            for (let btn of buttons) {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-blue-50', 'hover:bg-emerald-50', 'hover:bg-rose-50');
+                
+                if (btn.innerText.includes(`(${correctOption})`)) {
+                    // 正確答案標綠色
+                    btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800', 'font-bold');
+                } else if (btn.innerText.includes(`(${selectedOption})`) && selectedOption !== correctOption) {
+                    // 選錯的標紅色
+                    btn.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            }
+
+            // 展開詳解與動畫
+            explanation.classList.remove('hidden');
+            explanation.classList.add('animate-[fadeIn_0.5s_ease-out]');
+        }
+
+        // 土壤液化動畫觸發器
+        function triggerLiquefaction() {
+            const building = document.getElementById('liquefaction-building');
+            building.classList.add('building-sink');
+            setTimeout(() => {
+                building.classList.remove('building-sink');
+            }, 3000); // 3秒後復原
+        }
+    </script>
+</body>
+</html>
